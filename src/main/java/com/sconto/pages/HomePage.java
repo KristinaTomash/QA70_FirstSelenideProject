@@ -19,8 +19,16 @@ public class HomePage {
     }
 @FindBy(css = ".headerElement--login")
 WebElement loginIcon;
+
     public LoginPage clickOnLoginIcon() {
         $(loginIcon).click();
+        return Selenide.page(LoginPage.class);
+    }
+@FindBy(css = ".headerElement__status--login")
+WebElement statusLogin;
+
+    public LoginPage clickOnStatusLogin() {
+        $(statusLogin).click();
         return Selenide.page(LoginPage.class);
     }
 }

@@ -18,4 +18,29 @@ public class LoginPage {
     public SelenideElement verifyLoginTitle() {
         return $(loginTitle).shouldHave(text("Anmelden"));
     }
+
+
+    @FindBy(id = "loginEmail")
+    WebElement emailField;
+    @FindBy(id = "loginPassword")
+    WebElement passwordField;
+    public LoginPage enterData(String email, String password) {
+
+        $(emailField).val(email);
+        $(passwordField).val(password);
+
+        return Selenide.page(this);
+    }
+        @FindBy(id = "login-submit")
+        WebElement loginSubmit;
+
+    public HomePage clickOnAnmelden() {
+        $(loginSubmit).click();
+        return Selenide.page(HomePage.class);
+    }
+        @FindBy(css = ".titleHeadline")
+        WebElement userNameTitle;
+    public SelenideElement verifyName(String name) {
+        return $(userNameTitle).shouldHave(text(name));
+    }
 }
